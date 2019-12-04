@@ -34,10 +34,10 @@ router.get("/login", function(req, res) {
 
 router.get("/politics", (req, res) => {
   // TODO change scrappers to come from socket connections array
-  res.render("politics", { 
+  res.render("politics", {
     trump: 7,
     hillary: 3
-   })
+  });
 });
 
 router.get("/science", (req, res) => {
@@ -45,7 +45,7 @@ router.get("/science", (req, res) => {
   res.render("science", {
     flatEarth: 2,
     aliens: 4
-  })
+  });
 });
 
 router.post(

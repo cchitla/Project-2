@@ -32,6 +32,22 @@ router.get("/login", function(req, res) {
   res.render("login", { message: req.flash("error") });
 });
 
+router.get("/politics", (req, res) => {
+  // TODO change scrappers to come from socket connections array
+  res.render("politics", { 
+    trump: 7,
+    hillary: 3
+   })
+});
+
+router.get("/science", (req, res) => {
+  // TODO change scrappers to come from socket connections array
+  res.render("science", {
+    flatEarth: 2,
+    aliens: 4
+  })
+});
+
 router.post(
   "/login",
   passport.authenticate("local-login", {

@@ -1,4 +1,4 @@
-var socket = io.connect("http://localhost:3000/guncontrol");
+var socket = io.connect("https://scrap-room.herokuapp.com/guncontrol");
 
 let message = document.getElementById("message");
 let displayName = document.getElementById("displayName");

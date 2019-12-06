@@ -1,3 +1,163 @@
-.list-group-item {
+/* .list-group-item {
   line-height: 2.5;
+} */
+
+
+
+#titleBar{
+  text-align: center;
+  width: 100%;
+  display: block;
+  /* color: red; */
+  text-decoration: none;
+}
+                          body{
+                              background-color: #f1dac4;
+                          }
+
+.nav{
+  background-color:#f1dac4 !important ;
+  margin-top: 30px;
+}
+#titleLogo{
+  /* display: block; */
+  text-align: center !important;
+  align-content: center !important;
+  /* color: red; */
+  
+}
+
+.link{
+  color: black;
+  text-decoration: none !important;
+}
+
+.link :hover{
+  color: white;
+  text-decoration: none ;
+  border-bottom-style: none;
+}
+
+#log-in{
+  color:rgb(0, 0, 0);
+  padding: 20px;
+  border: black;
+  background-color: #f1dac4;
+  border-style: solid;
+  width: 400px;
+  height: 400px;
+  
+}
+
+.input{
+  border: white !important;
+  border-style: solid !important;
+  border-width: 1.5px !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+label{
+  font-size: 20px;
+}
+
+
+.nav-link{
+  line-height: 35px;
+  text-align: center;
+
+  float: none !important;
+  text-decoration: none;
+  color: black;
+  width: 100px;
+  padding: 0%;
+  margin: 0%;
+  
+}
+
+.gradient-text{
+  font-size: 35px;
+  background: -webkit-linear-gradient(rgb(17, 17, 17), rgb(255, 8, 8));
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+
+}
+/* .logInForm{
+
+} */
+
+.abs-center-x {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mouse-cursor-gradient-tracking {
+  position: relative;
+  /* background-color: #38aecc; */
+  background-image: linear-gradient(to right, #69c4db 15%, #249ac5 56%,rgb(52, 103, 243) 100%) !important;
+  
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: solid;
+
+  color:rgb(255, 255, 255);
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+}
+
+#google-btn{
+    padding: 0px;
+
+}
+
+#not_signed_inbi7bzj3ay3cv{
+    font-size: 20px;
+}
+
+
+
+.mouse-cursor-gradient-tracking span {
+  position: relative;
+}
+
+.mouse-cursor-gradient-tracking::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #ffffff80 10%,rgba(159, 163, 170, 0) 51%, transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease;
+  
+}
+
+.mouse-cursor-gradient-tracking:hover::before {
+  --size: 300px;
+}
+
+.mouse-cursor-gradient-tracking:hover{
+    color: black;
+}
+
+
+
+.card{
+    background-color: rgb(177, 52, 14);
+
+    
+}
+
+#sideBar{
+    padding: 10px;
+    background-color: rgb(102, 21, 21);
+    margin-left: -45px;
+}
+
+.chat{
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.527);
 }

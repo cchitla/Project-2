@@ -1,0 +1,69 @@
+<h1>Gun Control Scrap</h1>
+
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="col-5">
+
+                <div id="sideBar">
+                    <h3>Current Scraps</h3>
+                    <div id="row">
+
+                        <div class="col-12">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <a class="link" href="scraproom.html">
+                                        <h5  class="card-title">Gun Control</h5>
+                                    </a>
+                                    <h6 class="card-subtitle mb-2 text-light">Users Online: {{ online }} </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+
+                        <div class="col-12">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <a class="link" href="scraproom2.html">
+                                        <h5 class="card-title">Xbox Vs PS</h5>
+                                    </a>
+                                    <h6 class="card-subtitle mb-2 text-light">Users Online: </h6>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                
+
+            <div class="col-6">
+                <div id="chat" class="chat">
+                    <div id="output"></div>
+                    <div id="feedback"></div>
+                </div>
+                <form action="" id="messageForm">
+                    <div class="form-group">
+                        <br>
+                        <input id="displayName" class="form-control" placeholder="Display Name"></input>
+                        <br>
+                        <textarea id="message" class="form-control" placeholder="Enter Message"></textarea>
+                        <br>
+                        <input id="send" type="submit" class="btn btn-danger" value="Send Message">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/../socket.io/socket.io.js"></script>
+    <script src="/js/guncontrol.js"></script>

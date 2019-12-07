@@ -67,6 +67,7 @@ db.sequelize.sync(syncOptions).then(function() {
 const authRoutes = require("./controller/auth-controller");
 const userRoutes = require("./controller/user-controller");
 const chatRoutes = require("./controller/chats-controller");
+const apiRoutes = require("./controller/api-controller")(app);
 app.use(authRoutes);
 app.use(userRoutes);
 app.use(chatRoutes);

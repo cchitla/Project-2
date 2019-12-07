@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  app.get("/api/posts/:ChatRoom", function(requst, response) {
+  app.get("/api/posts/:ChatRoom", function(request, response) {
     db.Posts.findAll({
       where: {
         ChatRoom: request.params.ChatRoom

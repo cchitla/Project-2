@@ -60,9 +60,16 @@ export function socketio() {
     feedback.innerHTML = "";
   };
 
+  function getPosts(pageName) {
+    $.get(`/api/posts/${pageName}`, function(data) {
+      displayMessage(data);
+    });
+  }
+  getPosts(pageName);
+
   const displayMessage = data => {
     data.forEach(element => {
-      output.innerHTML += `<p><strong>${element.displayName}: </strong> ${element.message}</p>`;
+      output.innerHTML += `<p><strong>${element.Author}: </strong> ${element.Message}</p>`;
     });
   };
 }

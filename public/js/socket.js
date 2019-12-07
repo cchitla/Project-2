@@ -34,6 +34,16 @@ export function socketio() {
       displayName: displayName.value
     });
 
+    let postData = {
+      ChatRoom: pageName,
+      Author: displayName.value,
+      Message: message.value
+    };
+
+    $.post("/api/posts", postData, function() {
+      console.log("completed");
+    });
+
     message.value = "";
   });
 
@@ -60,6 +70,7 @@ export function socketio() {
     feedback.innerHTML = "";
   };
 
+  //api routes
   function getPosts(pageName) {
     $.get(`/api/posts/${pageName}`, function(data) {
       displayMessage(data);

@@ -33,6 +33,8 @@ router.get("/login", function(req, res) {
   res.render("login", { message: req.flash("error") });
 });
 
+///////////////////////////////////////////////////////////////////////
+
 router.get("/guncontrol", (req, res) => {
   if (req.user) {
     res.render("guncontrol", {
@@ -43,6 +45,30 @@ router.get("/guncontrol", (req, res) => {
     res.redirect("/login");
   }
 });
+
+router.get("/vaccines", (req, res) => {
+  if (req.user) {
+    res.render("vaccines", {
+      user: req.user,
+      online: 1
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/flatearth", (req, res) => {
+  if (req.user) {
+    res.render("flatearth", {
+      user: req.user,
+      online: 8
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+///////////////////////////////////////////////////////////////////////
 
 router.post(
   "/login",

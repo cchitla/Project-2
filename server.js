@@ -38,6 +38,8 @@ db.sequelize.sync(syncOptions).then(function() {
 
   //arrays to hold connected users and number of connections
   let guncontrolConnections = [];
+  let flatearthConnections = [];
+  let vaccineConnections = [];
 
   io.of("/guncontrol").on("connection", socket => {
     guncontrolConnections.push(socket);
@@ -60,6 +62,49 @@ db.sequelize.sync(syncOptions).then(function() {
     });
   });
 
+  io.of("/vaccines").on("connection", socket => {
+    vaccineConnections.push(socket);
+    console.log("Connection made: %s connected @ Vaccines", vaccineConnections.length);
+
+    socket.on("disconnect", () => {
+      vaccineConnections.splice(vaccineConnections.indexOf(socket), 1);
+      console.log("Disconnection: %s connected @ Vaccines", vaccineConnections.length);
+    });
+
+    // listening to typing from connected client sockets, and sending out to other sockets
+    socket.on("typing", data => {
+      socket.broadcast.emit("typing", data);
+    });
+
+    // listening to incoming messages from client sockets, sending out message data to other sockets
+    socket.on("chat message", data => {
+      socket.emit("chat message", data);
+      socket.broadcast.emit("chat message", data);
+    });
+  });
+
+  io.of("/flatearth").on("connection", socket => {
+    flatearthConnections.push(socket);
+    console.log("Connection made: %s connected @ Flat Earth", flatearthConnections.length);
+
+    socket.on("disconnect", () => {
+      flatearthConnections.splice(flatearthConnections.indexOf(socket), 1);
+      console.log("Disconnection: %s connected @ Flat Earth", flatearthConnections.length);
+    });
+
+    // listening to typing from connected client sockets, and sending out to other sockets
+    socket.on("typing", data => {
+      socket.broadcast.emit("typing", data);
+    });
+
+    // listening to incoming messages from client sockets, sending out message data to other sockets
+    socket.on("chat message", data => {
+      socket.emit("chat message", data);
+      socket.broadcast.emit("chat message", data);
+    });
+  });
+
+
   //DONT DELETE THIS
 });
 
@@ -67,6 +112,7 @@ db.sequelize.sync(syncOptions).then(function() {
 const authRoutes = require("./controller/auth-controller");
 const userRoutes = require("./controller/user-controller");
 const chatRoutes = require("./controller/chats-controller");
+// eslint-disable-next-line no-unused-vars
 const apiRoutes = require("./controller/api-controller")(app);
 app.use(authRoutes);
 app.use(userRoutes);

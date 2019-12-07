@@ -11,21 +11,30 @@
   /* color: red; */
   text-decoration: none;
 }
-                          body{
-                              background-color: #f1dac4;
-                          }
+ body{
+  background-color: #f1dac4;
+  }
 
 .nav{
   background-color:#f1dac4 !important ;
   margin-top: 30px;
 }
+
+@font-face {
+  font-family: 'eliantoregular';
+  src: url('../fonts/Elianto-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 #titleLogo{
   /* display: block; */
+  font-family: 'eliantoregular';
   text-align: center !important;
   align-content: center !important;
   /* color: red; */
-  
 }
+
 
 .link{
   color: black;
@@ -61,11 +70,12 @@ label{
 }
 
 
+
 .nav-link{
   line-height: 35px;
   text-align: center;
 
-  float: none !important;
+  float: left !important;
   text-decoration: none;
   color: black;
   width: 100px;
@@ -94,7 +104,7 @@ label{
 .mouse-cursor-gradient-tracking {
   position: relative;
   /* background-color: #38aecc; */
-  background-image: linear-gradient(to right, #69c4db 15%, #249ac5 56%,rgb(52, 103, 243) 100%) !important;
+  background-image: linear-gradient(to right, rgb(40, 49, 131) 6%,rgb(52, 103, 243) 30%,rgb(63, 131, 209) 40%, rgb(63, 131, 209) 55%,rgb(52, 103, 243) 70% ,rgb(40, 49, 131) 99%) !important;
   
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -114,8 +124,6 @@ label{
 #not_signed_inbi7bzj3ay3cv{
     font-size: 20px;
 }
-
-
 
 .mouse-cursor-gradient-tracking span {
   position: relative;
@@ -143,12 +151,17 @@ label{
     color: black;
 }
 
-
-
 .card{
-    background-color: rgb(177, 52, 14);
+    background-color: rgb(173, 57, 57);
 
     
+}
+.main-card{
+  background-color:#f1dac4;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+
 }
 
 #sideBar{
@@ -156,10 +169,62 @@ label{
     background-color: rgb(102, 21, 21);
     margin-left: -45px;
 }
+.main-logo{
+  font-size: 55px;
+}
+#signUp-btn{
+text-decoration: none;
+color: rgb(255, 0, 0) !important;
 
+}
+
+#signUp-btn:hover{
+  text-decoration: underline !important;
+  color:rgb(194, 9, 9) !important;
+  
+}
 .chat{
     height: 500px;
     background-color: rgba(255, 255, 255, 0.527);
     overflow:auto;
     
 }
+
+.spacer{
+  margin-top: 50px;
+}
+
+.login-cred{
+  border-color: black;
+}
+
+.signs{
+  color:black;
+  font-size: 35px;
+}
+
+/* .reference {
+  position: relative;
+  float: left;
+  padding: 20px;
+}
+.popout-menu {
+  position: absolute;
+  visibility: hidden;
+  left: 100%;
+  background: rgba(5, 40, 156, 0.692);
+  color: white;
+  padding: 35px;
+  opacity: .7;
+}
+.reference:hover > .popout-menu,
+.reference:focus > .popout-menu,
+.reference:focus-within > .popout-menu {
+  visibility: visible;
+}
+#icon
+{
+  font-size: 45px;
+  font-family: "eliantoregular";
+} */
+

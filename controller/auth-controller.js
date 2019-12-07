@@ -20,6 +20,7 @@ router.use(passport.session());
 
 router.get("/", function(req, res) {
   if (req.user) {
+    console.log(req.user.dataValues.email);
     res.render("index", {
       user: req.user
     });

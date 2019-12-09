@@ -36,7 +36,6 @@ export function socketio() {
 
     let postData = {
       ChatRoom: pageName,
-      // Author: displayName.value,
       Message: message.value,
       Username: displayName.value
     };

@@ -7,9 +7,12 @@ export function socketio() {
   let feedback = document.getElementById("feedback");
   let currentUsers = document.getElementById("current-users");
   let pageName = document.getElementById("page-info").className;
-  let pageURL = window.location.href;
+  let pageURL = window.location.href; // http://localhost:3000/guncontrol or other page name
   console.log(pageURL, window.location.pathname, window.location.hostname);
+  // pathname = /guncontrol or other page name
+  // hostname = localhost
   console.log(window.location.protocol);
+  // protocol = http:
 
   var socket = io.connect(`http://localhost:3000/${pageName}`);
   // var socket = io.connect(`https://new-scrap.herokuapp.com/${pageName}`);

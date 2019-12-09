@@ -43,23 +43,23 @@ db.sequelize.sync(syncOptions).then(function() {
 
   io.of("/guncontrol").on("connection", socket => {
     guncontrolConnections.push(socket);
-    console.log("Connection made: %s connected @ Politics", guncontrolConnections.length);
+    console.log("Connection made: %s connected @ Gun Control", guncontrolConnections.length);
 
     socket.on("disconnect", () => {
       guncontrolConnections.splice(guncontrolConnections.indexOf(socket), 1);
-      console.log("Disconnection: %s connected @ Politics", guncontrolConnections.length);
+      console.log("Disconnection: %s connected @ Gun Control", guncontrolConnections.length);
     });
 
     socket.on("get connected users", () => {
       socket.emit("get connected users", guncontrolConnections.length);
     });    
 
-    // listening to typing from connected client sockets, and sending out to other sockets
+    //listening to typing from connected client sockets, and sending out to other sockets
     socket.on("typing", data => {
       socket.broadcast.emit("typing", data);
     });
 
-    // listening to incoming messages from client sockets, sending out message data to other sockets
+    //listening to incoming messages from client sockets, sending out message data to other sockets
     socket.on("chat message", data => {
       socket.emit("chat message", data);
       socket.broadcast.emit("chat message", data);

@@ -10,7 +10,9 @@ const bcrypt = require("bcrypt");
 router.use(
   session({
     cookie: { maxAge: 60000 },
-    secret: "wootwoot"
+    secret: "wootwoot",
+    saveUninitialized: true,
+    resave: true
   })
 );
 router.use(flash());
@@ -158,7 +160,24 @@ router.post(
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true
-  })
+  }),
+  function(req, res) {
+    const payload = {
+      email: req.user.email,
+      expires: Date.now() + parseInt(60000)
+    };
+
+    req.login(payload, { session: false }, function(error) {
+      if (error) {
+        res.status(400).send({ error });
+      }
+
+      const token = jwt.sign(JSON.stringify(payload), jwtSecret.secret);
+
+      res.cookie("jwt", token, { httpOnly: true, secure: false });
+      res.redirect("/");
+    });
+  }
 );
 
 router.get("/signup", (req, res) => {
@@ -174,9 +193,16 @@ router.post(
   })
 );
 
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
+router.get("/logout", function(req, res) {
+  const record = {
+    status: "LogOut",
+    userId: req.user.dataValues.id
+  };
+  db.history.create(record).then(function() {
+    req.logout();
+    res.clearCookie("jwt");
+    res.redirect("/");
+  });
 });
 
 router.get("*", (req, res) => {

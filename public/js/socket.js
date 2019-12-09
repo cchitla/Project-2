@@ -7,9 +7,12 @@ export function socketio() {
   let feedback = document.getElementById("feedback");
   let currentUsers = document.getElementById("current-users");
   let pageName = document.getElementById("page-info").className;
+  let pageURL = window.location.href;
+  console.log(pageURL, window.location.pathname, window.location.hostname);
+  console.log(window.location.protocol);
 
-  // var socket = io.connect(`http://localhost:3000/${pageName}`);
-  var socket = io.connect(`https://new-scrap.herokuapp.com/${pageName}`);
+  var socket = io.connect(`http://localhost:3000/${pageName}`);
+  // var socket = io.connect(`https://new-scrap.herokuapp.com/${pageName}`);
 
   socket.emit("retrieve messages");
   socket.on("send db messages", data => {

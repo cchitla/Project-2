@@ -89,7 +89,6 @@ router.get("/userprefs", (req, res) => {
 });
 
 router.post("/api/posts", (req, res) => {
-  console.log("sending post to db");
   db.Posts.create({
     ChatRoom: req.body.ChatRoom,
     Author: req.user.email,
@@ -193,16 +192,9 @@ router.post(
   })
 );
 
-router.get("/logout", function(req, res) {
-  const record = {
-    status: "LogOut",
-    userId: req.user.dataValues.id
-  };
-  db.history.create(record).then(function() {
-    req.logout();
-    res.clearCookie("jwt");
-    res.redirect("/");
-  });
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
 });
 
 router.get("*", (req, res) => {

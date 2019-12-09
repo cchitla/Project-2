@@ -1,6 +1,10 @@
 {
   "name": "auth-project-two",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0",
+    "npm": "6.12.0"
+  },
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {

@@ -8,6 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     Message: {
       type: DataTypes.TEXT
+    },
+    Username: {
+      type: DataTypes.STRING
     }
   });
   return Posts;

@@ -1,0 +1,54 @@
+<nav id="titleBar" class="navbar navbar-expand-lg navbar-light titleBar mb-5">
+
+  <div class="reference">
+    <div class="popout-menu">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item">
+          {{#if user}}
+          <a class="nav-link" id="logOut" href="/logout" onclick="">Log Out</a>
+          {{else}}
+          <p>Please <a href="/login">log in</a>.</p>
+          {{/if}}
+        </li>
+
+        <li class="nav-item">
+          {{#if user}}
+          <a class="nav-link" id="logOut" href="/account" onclick="">Profile</a>
+          {{/if}}
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" id="logOut" href="/" onclick="">Home</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <ul class="navbar-nav abs-center-x">
+    <li class="nav-item">
+      <a id="titleLogo" class="navbar-brand gradient-text mb-3" href="/">ACCOUNT</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+
+<div class="col-12 text-center justify-content-center">
+
+  <div class="card" style="width: 50%;">
+    <div class="card-body">
+      <h5 class="card-title">Your Account</h5>
+      <p class="card-text">Username: </p>
+      <p class="card-text">Email: </p>
+      <a href="/userprefs" class="btn btn-primary">Change Info</a>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script src="/js/account.js"></script>

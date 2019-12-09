@@ -3,6 +3,8 @@ const express = require("express");
 const flash = require("connect-flash");
 const session = require("express-session");
 const router = express.Router();
+var db = require("../models");
+const bcrypt = require("bcrypt");
 
 // Flash
 router.use(
@@ -18,9 +20,8 @@ require("../config/passport")(passport);
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
   if (req.user) {
-    console.log(req.user.dataValues.email);
     res.render("index", {
       user: req.user
     });
@@ -29,7 +30,7 @@ router.get("/", function(req, res) {
   }
 });
 
-router.get("/login", function(req, res) {
+router.get("/login", (req, res) => {
   res.render("login", { message: req.flash("error") });
 });
 
@@ -38,8 +39,7 @@ router.get("/login", function(req, res) {
 router.get("/guncontrol", (req, res) => {
   if (req.user) {
     res.render("guncontrol", {
-      user: req.user,
-      online: 5
+      user: req.user
     });
   } else {
     res.redirect("/login");
@@ -49,8 +49,7 @@ router.get("/guncontrol", (req, res) => {
 router.get("/vaccines", (req, res) => {
   if (req.user) {
     res.render("vaccines", {
-      user: req.user,
-      online: 1
+      user: req.user
     });
   } else {
     res.redirect("/login");
@@ -60,12 +59,95 @@ router.get("/vaccines", (req, res) => {
 router.get("/flatearth", (req, res) => {
   if (req.user) {
     res.render("flatearth", {
-      user: req.user,
-      online: 8
+      user: req.user
     });
   } else {
     res.redirect("/login");
   }
+});
+
+router.get("/account", (req, res) => {
+  if (req.user) {
+    res.render("account", {
+      user: req.user
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/userprefs", (req, res) => {
+  if (req.user) {
+    res.render("userprefs", {
+      user: req.user
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.post("/api/posts", (req, res) => {
+  console.log("sending post to db");
+  db.Posts.create({
+    ChatRoom: req.body.ChatRoom,
+    Author: req.user.email,
+    Message: req.body.Message,
+    Username: req.body.Username
+  }).then(dbPost => {
+    res.json(dbPost);
+  });
+});
+
+router.put("/api/updateusernames", (req, res) => {
+  db.user
+    .update(
+      {
+        username: req.body.username
+      },
+      {
+        where: {
+          id: req.user.dataValues.id
+        }
+      }
+    )
+    .then(dbUpdate => {
+      res.json(dbUpdate);
+    });
+});
+
+router.put("/api/updateemails", (req, res) => {
+  db.user
+    .update(
+      {
+        email: req.body.email
+      },
+      {
+        where: {
+          id: req.user.dataValues.id
+        }
+      }
+    )
+    .then(dbUpdate => {
+      res.json(dbUpdate);
+    });
+});
+
+router.put("/api/updatepasswords", (req, res) => {
+  let saltedPass = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8));
+  db.user
+    .update(
+      {
+        password: saltedPass
+      },
+      {
+        where: {
+          id: req.user.dataValues.id
+        }
+      }
+    )
+    .then(dbUpdate => {
+      res.json(dbUpdate);
+    });
 });
 
 ///////////////////////////////////////////////////////////////////////
@@ -79,7 +161,7 @@ router.post(
   })
 );
 
-router.get("/signup", function(req, res) {
+router.get("/signup", (req, res) => {
   res.render("signup", { message: req.flash("error") });
 });
 
@@ -92,12 +174,12 @@ router.post(
   })
 );
 
-router.get("/logout", function(req, res) {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
 
-router.get("*", function(req, res) {
+router.get("*", (req, res) => {
   res.render("404");
 });
 

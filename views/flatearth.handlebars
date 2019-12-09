@@ -1,15 +1,49 @@
 <div id="page-info" class="flatearth"></div>
 
-<h1>Flat Earth Scrap</h1>
+<nav id="titleBar" class="navbar navbar-expand-lg navbar-light titleBar mb-5">
 
-    <div class="container">
+    <div class="reference">
+      <div class="popout-menu">
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            {{#if user}}
+            <a class="nav-link" id="logOut" href="/logout" onclick="">Log Out</a>
+            {{else}}
+            <p>Please <a href="/login">log in</a>.</p>
+            {{/if}}
+          </li>
+
+          <li class="nav-item">
+            {{#if user}}
+            <a class="nav-link" id="logOut" href="/account" onclick="">Profile</a>
+            {{/if}}
+          </li>
+
+          <li class="nav-item">          
+            <a class="nav-link" id="logOut" href="/" onclick="">Home</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+    <ul class="navbar-nav abs-center-x">
+      <li class="nav-item">
+        <a id="titleLogo" class="navbar-brand gradient-text" href="/">FLAT EARTH SCRAP</a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+    <div class="container mt-5">
 
         <div class="row">
 
 
             <div class="col-5">
-
                 <div id="sideBar">
+                  
                     <h3>Current Scraps</h3>
                     <div id="row">
 
@@ -40,6 +74,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -47,13 +82,14 @@
 
             <div class="col-6">
                 <div id="chat" class="chat">
+                    
                     <div id="output"></div>
                     <div id="feedback"></div>
                 </div>
                 <form action="" id="messageForm">
                     <div class="form-group">
-                        <br>
-                        <input id="displayName" class="form-control" placeholder="Display Name"></input>
+                        <p>&nbsp;<span id="current-users"></span></p>
+                        <input id="displayName" class="form-control" placeholder="Display Name" value={{ user.username }}></input>
                         <br>
                         <textarea id="message" class="form-control" placeholder="Enter Message"></textarea>
                         <br>

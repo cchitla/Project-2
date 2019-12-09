@@ -17,9 +17,10 @@ module.exports = function(passport) {
     new LocalStrategy(
       {
         usernameField: "email",
-        passwordField: "password"
+        passwordField: "password",
+        passReqToCallback: true
       },
-      function(email, password, cb) {
+      function(req, email, password, cb) {
         db.user.findOne({ where: { email: email } }).then(function(data) {
           if (data) {
             return cb(null, false, {
@@ -29,6 +30,7 @@ module.exports = function(passport) {
             db.user
               .create({
                 email: email,
+                username: req.body.username,
                 password: db.user.generateHash(password)
               })
               .then(function(data) {

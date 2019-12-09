@@ -18,9 +18,9 @@ export function socketio() {
   socket.emit("get connected users");
   socket.on("get connected users", data => {
     if (data > 1) {
-      currentUsers.innerHTML = `<p>${data} users currently here</p>`;
+      currentUsers.innerHTML = `<span>${data} users currently here.</span>`;
     } else {
-      currentUsers.innerHTML = "<p>You are the only one here.</p>";
+      currentUsers.innerHTML = "<span>You are the only one here.</span>";
     }
   });
 
@@ -36,8 +36,9 @@ export function socketio() {
 
     let postData = {
       ChatRoom: pageName,
-      Author: displayName.value,
-      Message: message.value
+      // Author: displayName.value,
+      Message: message.value,
+      Username: displayName.value
     };
 
     $.post("/api/posts", postData, function() {
@@ -52,17 +53,17 @@ export function socketio() {
     socket.emit("typing", displayName.value);
   });
 
+  //listening for incoming typing event from server
+  socket.on("typing", data => {
+    feedback.innerHTML = `<p><em>${data} is typing... </em></p>`;
+    setTimeout(clearFeedback, 1000);
+  });
+
   //listening for incoming chat message from server
   socket.on("chat message", data => {
     //output data to DOM
     output.innerHTML += `<p><strong>${data.displayName}: </strong> ${data.message}</p>`;
     chatWindow.scrollTop = chatWindow.scrollHeight - chatWindow.clientHeight;
-  });
-
-  //listening for incoming typing event from server
-  socket.on("typing", data => {
-    feedback.innerHTML = `<p><em>${data} is typing... </em></p>`;
-    setTimeout(clearFeedback, 3000);
   });
 
   // function to clear typing message (is called on a setTimeout)
@@ -80,7 +81,7 @@ export function socketio() {
 
   const displayMessage = data => {
     data.forEach(element => {
-      output.innerHTML += `<p><strong>${element.Author}: </strong> ${element.Message}</p>`;
+      output.innerHTML += `<p><strong>${element.Username}: </strong> ${element.Message}</p>`;
     });
   };
 }

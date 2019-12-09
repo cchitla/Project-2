@@ -50,6 +50,10 @@ db.sequelize.sync(syncOptions).then(function() {
       console.log("Disconnection: %s connected @ Politics", guncontrolConnections.length);
     });
 
+    socket.on("get connected users", () => {
+      socket.emit("get connected users", guncontrolConnections.length);
+    });    
+
     // listening to typing from connected client sockets, and sending out to other sockets
     socket.on("typing", data => {
       socket.broadcast.emit("typing", data);
@@ -69,6 +73,10 @@ db.sequelize.sync(syncOptions).then(function() {
     socket.on("disconnect", () => {
       vaccineConnections.splice(vaccineConnections.indexOf(socket), 1);
       console.log("Disconnection: %s connected @ Vaccines", vaccineConnections.length);
+    });
+
+    socket.on("get connected users", () => {
+      socket.emit("get connected users", vaccineConnections.length);
     });
 
     // listening to typing from connected client sockets, and sending out to other sockets
@@ -92,6 +100,10 @@ db.sequelize.sync(syncOptions).then(function() {
       console.log("Disconnection: %s connected @ Flat Earth", flatearthConnections.length);
     });
 
+    socket.on("get connected users", () => {
+      socket.emit("get connected users", flatearthConnections.length);
+    });
+
     // listening to typing from connected client sockets, and sending out to other sockets
     socket.on("typing", data => {
       socket.broadcast.emit("typing", data);
@@ -111,9 +123,7 @@ db.sequelize.sync(syncOptions).then(function() {
 // Routes
 const authRoutes = require("./controller/auth-controller");
 const userRoutes = require("./controller/user-controller");
-const chatRoutes = require("./controller/chats-controller");
 // eslint-disable-next-line no-unused-vars
 const apiRoutes = require("./controller/api-controller")(app);
 app.use(authRoutes);
 app.use(userRoutes);
-app.use(chatRoutes);

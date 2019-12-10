@@ -7,11 +7,8 @@ export function socketio() {
   let feedback = document.getElementById("feedback");
   let currentUsers = document.getElementById("current-users");
   let pageName = document.getElementById("page-info").className;
-  let pageURL = window.location.href;
 
-  // var socket = io.connect(`http://localhost:3000/${pageName}`);
-  // var socket = io.connect(`https://new-scrap.herokuapp.com/${pageName}`);
-  var socket = io.connect(pageURL);
+  var socket = io.connect(window.location.href);
 
   socket.emit("retrieve messages");
   socket.on("send db messages", data => {

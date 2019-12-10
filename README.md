@@ -2,7 +2,7 @@
 
 A live chat app utilizing socket.io
 
-Deployed at new-scrap.heroku.com
+Deployed on [Heroku](https://new-scrap.herokuapp.com/)
 
 To run locally: 
 

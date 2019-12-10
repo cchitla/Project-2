@@ -43,8 +43,20 @@
 
 .link :hover{
   color: white;
-  text-decoration: none ;
+  text-decoration: underline ;
   border-bottom-style: none;
+}
+
+.topic{
+  color: black;
+    font-size: 18px;
+  text-decoration: none !important;
+
+}
+
+.topic :hover{
+  color:red;
+  text-decoration: underline;
 }
 
 #log-in{
@@ -168,7 +180,9 @@ label{
     padding: 10px;
     background-color: rgb(102, 21, 21);
     margin-left: -45px;
+    padding-bottom:20px ;
 }
+
 .main-logo{
   font-size: 55px;
 }
@@ -185,8 +199,11 @@ color: rgb(255, 0, 0) !important;
 }
 .chat{
     height: 500px;
-    background-color: rgba(255, 255, 255, 0.527);
+    background-color: rgba(255, 255, 255, 0.74);
     overflow:auto;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
     
 }
 
@@ -201,6 +218,80 @@ color: rgb(255, 0, 0) !important;
 .signs{
   color:black;
   font-size: 35px;
+}
+
+#current-title{
+    padding-left: 15px;
+}
+
+
+#chat-title{
+    font-size: 50px;
+margin: auto;
+width: 50%;
+padding: 10px;
+text-align: center;
+padding-bottom: 50px;
+}
+
+.chat-functions{
+
+  margin: 10px 10px 10px 0px;
+  border: black;
+  border-style: solid;
+
+}
+
+#link-title{
+  margin-top: 20px;
+  margin-left: 25px;
+  padding-top: 20px;
+  margin-bottom: 0px;
+
+  /* padding-left: 35px;
+  padding-top: 10px;
+  color: white;
+  font-size: 35px;
+  padding-bottom: 5px;
+  margin-bottom: 0px; */
+ 
+}
+
+#link-box{
+  margin: 25px 25px 5px 0px;
+  width: 395px;
+  height: 300px;
+  background-color: rgb(5, 6, 88);
+
+
+  /* padding: 10px; */
+    /* background-color: rgb(102, 21, 21); */
+    margin-left: -45px;
+    /* padding-bottom:20px ; */
+}
+
+.link-card{
+background-color: rgb(253, 253, 253);
+border-radius:4px;
+margin: 15px;
+margin-right: 25px;
+margin-top: 5px;
+margin-bottom: 5px;
+margin-left: 25px;
+}
+
+.link-body{
+
+  margin-left: 15px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+   height: 50px;
+   width: 75%;
+   line-height: 45px;
+}
+
+.link-body:hover{
+  color:red;
 }
 
 /* .reference {

@@ -2,99 +2,280 @@
 
 <nav id="titleBar" class="navbar navbar-expand-lg navbar-light titleBar mb-5">
 
-    <div class="reference">
-      <div class="popout-menu">
-        <ul class="navbar-nav ml-auto">
+  <div class="reference">
+    <div class="popout-menu">
+      <ul class="navbar-nav ml-auto">
 
-          <li class="nav-item">
-            {{#if user}}
-            <a class="nav-link" id="logOut" href="/logout" onclick="">Log Out</a>
-            {{else}}
-            <p>Please <a href="/login">log in</a>.</p>
-            {{/if}}
-          </li>
+        <li class="nav-item">
+          {{#if user}}
+          <a class="nav-link" id="logOut" href="/logout" onclick="">Log Out</a>
+          {{else}}
+          <p>Please <a href="/login">log in</a>.</p>
+          {{/if}}
+        </li>
 
-          <li class="nav-item">
-            {{#if user}}
-            <a class="nav-link" id="logOut" href="/account" onclick="">Profile</a>
-            {{/if}}
-          </li>
+        <li class="nav-item">
+          {{#if user}}
+          <a class="nav-link" id="logOut" href="/account" onclick="">Profile</a>
+          {{/if}}
+        </li>
 
-          <li class="nav-item">          
-            <a class="nav-link" id="logOut" href="/" onclick="">Home</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="logOut" href="/" onclick="">Home</a>
+        </li>
 
-        </ul>
-      </div>
+      </ul>
     </div>
-    <ul class="navbar-nav abs-center-x">
-      <li class="nav-item">
-        <a id="titleLogo" class="navbar-brand gradient-text mb-3" href="/">GUN CONTROL SCRAP</a>
-      </li>
-    </ul>
-  </nav>
+  </div>
+  <ul class="navbar-nav abs-center-x">
+    <li class="nav-item">
+      <a id="titleLogo" class="navbar-brand gradient-text mb-3" href="/">GUN CONTROL SCRAP</a>
+    </li>
+  </ul>
+</nav>
 
-    <div class="container">
+
+{{!-- New Container --}}
+
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-4">
+
+      <div id="sideBar">
+        <h3 id="current-title" class="text-white">Current Scraps</h3>
+
+        <div id="row">
+
+          <div class="col-12">
+
+            <div class="card">
+              <div class="card-body">
+                <a class="link" href="/flatearth">
+                  <h5 class="card-title">Flat Earth</h5>
+                </a>
+                <h6 class="card-subtitle mb-2 text-light">Users Online: </h6>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="col-12">
+
+            <div class="card">
+              <div class="card-body">
+                <a class="link" href="vaccines">
+                  <h5 class="card-title">Vaccines</h5>
+                </a>
+                <h6 class="card-subtitle mb-2 text-light">Users Online: </h6>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="link-box">
+        <h3 id="link-title" class="text-white"> Informational Links</h3>
 
         <div class="row">
 
-            <div class="col-5">
-                <div id="sideBar">
-                    <h3>Current Scraps</h3>
-                    <div id="row">
+          <div class="col-12 ">
+            <div class="link-card">
+              <div class="link-body">
 
-                        <div class="col-12">
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <a class="link" href="/flatearth">
-                                        <h5  class="card-title">Flat Earth</h5>
-                                    </a>
-                                    <h6 class="card-subtitle mb-2 text-light">Users Online:</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-
-
-                        <div class="col-12">
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <a class="link" href="/vaccines">
-                                        <h5 class="card-title">Vaccines</h5>
-                                    </a>
-                                    <h6 class="card-subtitle mb-2 text-light">Users Online:</h6>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a class="topic" href="https://gun-control.procon.org/">Pros & Cons</a>
+              </div>
             </div>
+          </div>
 
-                
 
-            <div class="col-6">
-                <div id="chat" class="chat">
-                    <div id="output"></div>
-                    <div id="feedback"></div>
-                </div>
-                <form action="" id="messageForm">
-                    <div class="form-group">
-                        <p>&nbsp;<span id="current-users"></span></p>
-                        <input id="displayName" class="form-control" placeholder="Display Name" value={{ user.username }}></input>
-                        <br>
-                        <textarea id="message" class="form-control" placeholder="Enter Message"></textarea>
-                        <br>
-                        <input id="send" type="submit" class="btn btn-danger" value="Send Message">
+          <div class="col-12 ">
+            <div class="link-card">
+              <div class="link-body">
+                <a class="topic" href="https://www.opensecrets.org/news/issues/guns">Gun Rights vs
+                  Gun Control</a>
 
-                    </div>
-                </form>
+              </div>
             </div>
+          </div>
+
+
+          <div class="col-12 ">
+            <div class="link-card">
+              <div class="link-body">
+                <a class="topic" href="https://www.britannica.com/technology/gun-control">Gun
+                  Control</a>
+              </div>
+            </div>
+          </div>
+
         </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-7">
+      <div id="chat" class="chat">
+        <div id="output"></div>
+        <div id="feedback"></div>
+      </div>
+      <form action="" id="messageForm">
+        <div class="form-group">
+          <p>&nbsp;<span id="current-users"></span></p>
+          <input id="displayName" class="form-control chat-functions" placeholder="Display Name"
+            value={{user.username}}></input>
+          <br>
+          <textarea id="message" class="form-control chat-functions" placeholder="Enter Message"></textarea>
+          <br>
+          <input id="send" type="submit" class="btn btn-danger" value="Send Message">
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Chat Rules</h5>
+        <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          1. No Spamming
+        </p>
+        <p>
+          2. No personal Attacks or Harassment(This includes profanity and offensive language)
+        </p>
+        <p>
+          3. Be respectful to others (This is a middle ground for those who wish to speak more about the
+          subject)
+        </p>
+        <p>
+          4. Don't get too personal. Don't use your full name or reveal any personal information in a
+          ScrapRoom
+        </p>
+        <p>
+          5. Multiple sites have been linked to help inform participants undertstand both sides of the
+          Scrap
+        </p>
+        <p>
+          6. Have Fun!
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger close-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+  $(window).on('load', function () {
+    var modal = document.getElementById("myModal");
+
+    var btn = document.getElementById("close-btn");
+
+    modal.style.display = "block";
+
+    $("#buttBoi").on('click', function () {
+      console.log("Test");
+      // $('#myModal').trigger('focus');
+      // $("#myModal").modal('show');
+    })
+
+    $(".close-btn").on("click", function () {
+      modal.style.display = "none";
+    });
+  })
+</script>
+
+
+
+
+{{!-- Commented out old container  --}}
+
+{{!-- <div class="container">
+
+  <div class="row">
+
+    <div class="col-5">
+      <div id="sideBar">
+        <h3>Current Scraps</h3>
+        <div id="row">
+
+          <div class="col-12">
+
+            <div class="card">
+              <div class="card-body">
+                <a class="link" href="/flatearth">
+                  <h5 class="card-title">Flat Earth</h5>
+                </a>
+                <h6 class="card-subtitle mb-2 text-light">Users Online:</h6>
+              </div>
+            </div>
+          </div>
+          <br>
+
+
+          <div class="col-12">
+
+            <div class="card">
+              <div class="card-body">
+                <a class="link" href="/vaccines">
+                  <h5 class="card-title">Vaccines</h5>
+                </a>
+                <h6 class="card-subtitle mb-2 text-light">Users Online:</h6>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 
-    <script src="/../socket.io/socket.io.js"></script>
-    <script type="module" src="/js/guncontrol.js"></script>
+
+    <div class="col-6">
+      <div id="chat" class="chat">
+        <div id="output"></div>
+        <div id="feedback"></div>
+      </div>
+      <form action="" id="messageForm">
+        <div class="form-group">
+          <p>&nbsp;<span id="current-users"></span></p>
+          <input id="displayName" class="form-control" placeholder="Display Name" value={{ user.username }}></input>
+          <br>
+          <textarea id="message" class="form-control" placeholder="Enter Message"></textarea>
+          <br>
+          <input id="send" type="submit" class="btn btn-danger" value="Send Message">
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div> --}}
+
+
+<script src="/../socket.io/socket.io.js"></script>
+<script type="module" src="/js/guncontrol.js"></script>

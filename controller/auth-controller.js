@@ -88,6 +88,16 @@ router.get("/userprefs", (req, res) => {
   }
 });
 
+router.get("/api/userposts", (req, res) => {
+  db.Posts.findAll({
+    where: {
+      Author: req.user.email
+    }
+  }).then(function(dbPosts) {
+    res.json(dbPosts);
+  });
+});
+
 router.post("/api/posts", (req, res) => {
   db.Posts.create({
     ChatRoom: req.body.ChatRoom,

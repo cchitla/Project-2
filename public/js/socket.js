@@ -8,14 +8,38 @@ export function socketio() {
   let currentUsers = document.getElementById("current-users");
   let pageName = document.getElementById("page-info").className;
 
+  let guncontrol = document.getElementById("chat1");
+  let vaccines = document.getElementById("chat2");
+  let flatearth = document.getElementById("chat3");
+
   var socket = io.connect(window.location.href);
+
+  socket.emit("get all connected");
+  socket.on("get all connected", data => {
+    guncontrol.innerHTML = `<span>${data.guncontrol}</span>`;
+    vaccines.innerHTML = `<span>${data.vaccines}</span>`;
+    flatearth.innerHTML = `<span>${data.flatearth}</span>`;
+  });
+
+  getAllConnected();
+  setInterval(getAllConnected, 1500);
+
+  function getAllConnected() {
+    socket.emit("get all connected");
+  }
 
   socket.emit("retrieve messages");
   socket.on("send db messages", data => {
     displayMessage(data);
   });
 
-  socket.emit("get connected users");
+  getConnected();
+  setInterval(getConnected, 1500);
+
+  function getConnected() {
+    socket.emit("get connected users");
+  }
+
   socket.on("get connected users", data => {
     if (data > 1) {
       currentUsers.innerHTML = `<span>${data} users currently here.</span>`;

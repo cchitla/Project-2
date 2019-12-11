@@ -2,7 +2,7 @@ let guncontrol = document.getElementById("guncontrol");
 let vaccines = document.getElementById("vaccines");
 let flatearth = document.getElementById("flatearth");
 
-var socket = io.connect("http://localhost:3000/main");
+var socket = io.connect("https://new-scrap.herokuapp.com/main");
 
 socket.emit("get all connected");
 socket.on("get all connected", data => {

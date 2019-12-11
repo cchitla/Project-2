@@ -41,6 +41,18 @@ db.sequelize.sync(syncOptions).then(function() {
   let flatearthConnections = [];
   let vaccineConnections = [];
 
+  //connection on main page to show users in each chat
+  io.of("/main").on("connection", socket => {
+    socket.on("get all connected", () => {
+      let allConnections = {
+        guncontrol: guncontrolConnections.length,
+        flatearth: flatearthConnections.length,
+        vaccines: vaccineConnections.length
+      };
+      socket.emit("get all connected", allConnections);
+    });
+  });
+
   io.of("/guncontrol").on("connection", socket => {
     guncontrolConnections.push(socket);
     console.log("Connection made: %s connected @ Gun Control", guncontrolConnections.length);
@@ -52,7 +64,7 @@ db.sequelize.sync(syncOptions).then(function() {
 
     socket.on("get connected users", () => {
       socket.emit("get connected users", guncontrolConnections.length);
-    });    
+    });
 
     //listening to typing from connected client sockets, and sending out to other sockets
     socket.on("typing", data => {
@@ -63,6 +75,15 @@ db.sequelize.sync(syncOptions).then(function() {
     socket.on("chat message", data => {
       socket.emit("chat message", data);
       socket.broadcast.emit("chat message", data);
+    });
+
+    socket.on("get all connected", () => {
+      let allConnections = {
+        guncontrol: guncontrolConnections.length,
+        flatearth: flatearthConnections.length,
+        vaccines: vaccineConnections.length
+      };
+      socket.emit("get all connected", allConnections);
     });
   });
 
@@ -89,6 +110,15 @@ db.sequelize.sync(syncOptions).then(function() {
       socket.emit("chat message", data);
       socket.broadcast.emit("chat message", data);
     });
+
+    socket.on("get all connected", () => {
+      let allConnections = {
+        guncontrol: guncontrolConnections.length,
+        flatearth: flatearthConnections.length,
+        vaccines: vaccineConnections.length
+      };
+      socket.emit("get all connected", allConnections);
+    });
   });
 
   io.of("/flatearth").on("connection", socket => {
@@ -113,6 +143,15 @@ db.sequelize.sync(syncOptions).then(function() {
     socket.on("chat message", data => {
       socket.emit("chat message", data);
       socket.broadcast.emit("chat message", data);
+    });
+
+    socket.on("get all connected", () => {
+      let allConnections = {
+        guncontrol: guncontrolConnections.length,
+        flatearth: flatearthConnections.length,
+        vaccines: vaccineConnections.length
+      };
+      socket.emit("get all connected", allConnections);
     });
   });
 

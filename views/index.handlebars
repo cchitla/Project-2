@@ -48,7 +48,7 @@
               <a class="link" href="/guncontrol">
                 <h5 class="card-title">Gun Control</h5>
               </a>
-              <h6 class="card-subtitle mb-2 text-light">Users Online: </h6>
+              <h6 class="card-subtitle mb-2 text-light">Users Online: <span id="guncontrol"></span> </h6>
             </div>
           </div>
 
@@ -62,7 +62,7 @@
               <a class="link" href="/vaccines">
                 <h5 class="card-title">Vaccines</h5>
               </a>
-              <h6 class="card-subtitle mb-2 text-light">Users Online: </h6>
+              <h6 class="card-subtitle mb-2 text-light">Users Online:<span id="vaccines"></span> </h6>
 
             </div>
           </div>
@@ -75,7 +75,7 @@
               <a class="link" href="/flatearth">
                 <h5 class="card-title">Flat Earth</h5>
               </a>
-              <h6 class="card-subtitle mb-2 text-light">Users Online</h6>
+              <h6 class="card-subtitle mb-2 text-light">Users Online: <span id="flatearth"></span></h6>
 
             </div>
           </div>
@@ -92,3 +92,6 @@
     {{!-- end  of bootstrap  div --}}
   </div>
 </div>
+
+<script src="/../socket.io/socket.io.js"></script>
+<script src="/js/main.js"></script>
